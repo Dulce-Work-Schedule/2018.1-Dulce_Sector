@@ -45,14 +45,14 @@ var seneca = require('seneca')()
       .use('seneca-amqp-transport')
       .use("entity")
       .use('api')
-      .client( {
-          type:'amqp',
-          pin:'role:sector',
-          port: 5672,
-          username: 'guest',
-          password: 'guest',
-          url: 'amqp://rabbitmq',
-         } )
+      .client({
+          type: 'amqp',
+          pin: 'role:sector',
+          port: process.env.RABBITMQ_PORT,
+          username: process.env.RABBITMQ_DEFAULT_USER,
+          password: process.env.RABBITMQ_DEFAULT_PASS,
+          url: 'amqp://' + process.env.RABBITMQ_HOST
+      })
       .ready(() => {
             app.listen(8080)
       })

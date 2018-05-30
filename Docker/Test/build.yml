@@ -1,0 +1,14 @@
+version: '3.5'
+
+services:
+  sectorserver:
+    image: dulce/sector-server:test
+    build:
+      context: ../../
+      dockerfile: Docker/Test/Server/Dockerfile
+
+  sectorclient:
+    image: dulce/sector-client:test
+    build:
+      context: ../../
+      dockerfile: Docker/Test/Client/Dockerfile
