@@ -1,14 +1,14 @@
 version: '3.5'
 
 services:
-  userserver:
-    image: dulce/user-server:test
+  sectorserver:
+    image: dulce/sector-server:test
     build:
       context: ../../
       dockerfile: Docker/Test/Server/Dockerfile
 
-  userclient:
-    image: dulce/user-client:test
+  sectorclient:
+    image: dulce/sector-client:test
     build:
       context: ../../
       dockerfile: Docker/Test/Client/Dockerfile
