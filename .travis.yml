@@ -11,10 +11,19 @@ before_install:
   - sudo chmod +x /usr/local/bin/docker-compose
   - docker-compose version
   - docker version
+
 before_script:
   - ./utils/script_coveralls.sh
-  - cd $TRAVIS_BUILD_DIR/Docker/Test
+  - cd $TRAVIS_BUILD_DIR/Environments/Test
   - sudo docker-compose -f build.yml build
 
 script:
   - sudo docker-compose -f start-sector.yml run sectorserver npm run coverage
+  - cd $TRAVIS_BUILD_DIR
+
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash ./utils/deploy.sh
+  on:
+    branch: master
