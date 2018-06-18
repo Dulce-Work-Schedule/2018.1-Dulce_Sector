@@ -1,12 +1,10 @@
-### Para mais informações visite nossa página [dulce](https://fga-gpp-mds.github.io/2018.1-Dulce_App/index.html)
-# Sector
+[<img src="docs/DulceHorizontal.svg" width="1300" title="">](https://dulce-work-schedule.github.io/)
+# Dulce Sector
 
 [![Build Status](https://travis-ci.org/Dulce-Work-Schedule/2018.1-Dulce_Sector.svg?branch=master)](https://travis-ci.org/Dulce-Work-Schedule/2018.1-Dulce_Sector)
 [![Maintainability](https://api.codeclimate.com/v1/badges/e5176d0dc9afe430eece/maintainability)](https://codeclimate.com/github/Dulce-Work-Schedule/2018.1-Dulce_Sector/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/Dulce-Work-Schedule/2018.1-Dulce_Sector/badge.svg?branch=)](https://coveralls.io/github/Dulce-Work-Schedule/2018.1-Dulce_Sector?branch=)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-### Microsserviços de gerenciamento de setores de um hospital
 
 O microsserviço Sector é utilizado pelo app [Dulce](https://dulce-work-schedule.github.io/2018.1-Dulce_App/) para gerenciar os setores da aplicação.
 
