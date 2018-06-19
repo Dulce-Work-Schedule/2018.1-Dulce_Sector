@@ -2,13 +2,13 @@ version: '3.5'
 
 services:
   scheduleserver:
-    image: dulce/schedule-server:prod
+    image: dulce/sector-server:prod
     build:
       context: ../../
       dockerfile: Environments/Production/Server/Dockerfile
 
   scheduleclient:
-    image: dulce/schedule-client:prod
+    image: dulce/sector-client:prod
     build:
       context: ../../
       dockerfile: Environments/Production/Client/Dockerfile
