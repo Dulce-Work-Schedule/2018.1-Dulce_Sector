@@ -67,16 +67,16 @@ module.exports = function api(options){
       pin:    'role:api,path:*',
       map: {
         create: { POST:true,
-                    // auth: {
-                      // strategy: 'jwt',
-                      // fail: '/api/sector/error',
-                    // }
+                    auth: {
+                      strategy: 'jwt',
+                      fail: '/api/sector/error',
+                    }
                   },
         list: { GET:true,
-                    // auth: {
-                    //   strategy: 'jwt',
-                    //   fail: '/api/sector/error',
-                    // }
+                    auth: {
+                      strategy: 'jwt',
+                      fail: '/api/sector/error',
+                    }
                   },
         error: {GET:true}
       }
