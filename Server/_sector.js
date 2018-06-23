@@ -24,9 +24,9 @@ module.exports = function(options){
       })
       .catch(function(err) {
         console.log('error')
-        console.log(err)        
+        console.log(err)
       })
-    
+
     sector.save$(function(err,sector){
       respond(null,sector)
     })
@@ -36,6 +36,36 @@ module.exports = function(options){
     var sector = this.make('sectors');
     sector.list$({all$:true}, function(error,sector){
       respond(null,sector);
+    });
+  })
+
+  this.add('role:sector, cmd:view', function list(msg, respond){
+    result  = {};
+    var sector = this.make('sectors');
+    sector_id = msg.sector_id
+    sector.load$({id:sector_id}, function(error,sector){
+      if (sector  == null){
+        result.sector_not_find_error = "Setor não encontrado"
+        result.sucess = false
+        respond(null,result);
+      } else {
+        respond(null,sector);
+      }
+    });
+  })
+
+  this.add('role:sector, cmd:listByHospital', function list(msg, respond){
+    result  = {};
+    var sector = this.make('sectors');
+    hospital_id = msg.hospital_id
+    sector.list$({hospital_id:hospital_id}, function(error,sector){
+      if (sector.length == 0){
+        result.hospital_not_find_error = "Hospital não possui nenhum setor cadastrado"
+        result.sucess = false
+        respond(null,result);
+      } else {
+        respond(null,sector);
+      }
     });
   })
 
