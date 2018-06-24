@@ -32,7 +32,7 @@ module.exports = function api(options){
     }
     result = {}
     name.value = msg.args.body.name
-    hospital_id.value = msg.args.body.hospital_id    
+    hospital_id.value = msg.args.body.hospital_id
 
     result = validate_field(name, result)
     result = validate_id(hospital_id, result)
@@ -56,6 +56,36 @@ module.exports = function api(options){
     },respond)
   });
 
+  this.add('role:api,path:view', function(msg,respond) {
+    var sector_id = {
+      verbose: 'Id de Setor',
+      field_name: 'sector_id'
+    }
+    result = {}
+    sector_id.value = msg.args.query.sector_id
+
+    result = validate_id(sector_id, result)
+
+    this.act('role:sector, cmd:view',{
+      sector_id: sector_id.value
+    },respond)
+  });
+
+  this.add('role:api,path:listByHospital', function(msg,respond) {
+    var hospital_id = {
+      verbose: 'Id do Hospital',
+      field_name: 'hospital_id'
+    }
+    result = {}
+    hospital_id.value = msg.args.query.hospital_id
+
+    result = validate_id(hospital_id, result)
+
+    this.act('role:sector, cmd:listByHospital',{
+      hospital_id: hospital_id.value
+    },respond)
+  });
+
   this.add('role:api,path:error', function(msg, respond){
     this.act('role:sector, cmd:error',{}, respond)
   });
@@ -73,6 +103,18 @@ module.exports = function api(options){
                     }
                   },
         list: { GET:true,
+                    auth: {
+                      strategy: 'jwt',
+                      fail: '/api/sector/error',
+                    }
+                  },
+        view: { GET:true,
+                    auth: {
+                      strategy: 'jwt',
+                      fail: '/api/sector/error',
+                    }
+                  },
+        listByHospital: { GET:true,
                     auth: {
                       strategy: 'jwt',
                       fail: '/api/sector/error',
